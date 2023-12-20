@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>attireful.</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <header>
+            <div class="header-left">
+                <h1>attireful.</h1>
+            </div>
+            <div class="header-right">
+                <div class="dropdown">
+                    <button onclick="toggleDropdown()" class="dropbtn">
+                        Membership
+                    </button>
+                    <div id="membershipDropdown" class="dropdown-content">
+                        <a href="signup.html">Sign Up</a>
+                        <a href="login.html">Log In</a>
+                    </div>
+                </div>
+                <div id="cartSidebar" class="sidebar">
+                    <a
+                        href="javascript:void(0)"
+                        class="closebtn"
+                        onclick="closeCart()"
+                        >&times;</a
+                    >
+                    <div class="cart-content">
+                        <h2>Cart</h2>
+                        <ul id="cartItems"></ul>
+                        <div class="buy-now-wrapper">
+                            <button class="buy-now-sidebar" onclick="buyNow()">
+                                Buy Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <a id="cartButton" onclick="openCart()">Cart</a>
+                <div class="search-bar">
+                    <input
+                        type="text"
+                        id="search-input"
+                        placeholder="Search"
+                        onkeydown="performSearch(event)"
+                    />
+                    <ul id="suggestion-list"></ul>
+                </div>
+            </div>
+        </header>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section class="products">
+            <h2>Products</h2>
+            <div class="filter">
+                <label for="category-filter">Filter by Category:</label>
+                <select id="category-filter">
+                    <option value="all">All</option>
+                    <option value="jacket">Jacket</option>
+                    <option value="dress">Dress</option>
+                    <option value="shirt">Shirt</option>
+                    <option value="pants">Pants</option>
+                    <option value="skirt">Skirt</option>
+                    <option value="coat">Coat</option>
+                    <option value="swimsuit">Swimsuit</option>
+                </select>
+            </div>
+            <div class="product-grid">
+                <div class="product-card" data-category="jacket">
+                    <img src="product1.png" alt="Product 1" />
+                    <h3>Brown Leather Jacket</h3>
+                    <p class="price">$99.99</p>
+                    <button
+                        class="add-to-cart"
+                        onclick="addToCart('Brown Leather Jacket')"
+                    >
+                        Add to Cart
+                    </button>
+                    <button
+                        class="buy-now"
+                        onclick="buyNow('Brown Leather Jacket')"
+                    >
+                        Buy Now
+                    </button>
+                </div>
+                <div class="product-card" data-category="dress">
+                    <img src="product2.png" alt="Product 2" />
+                    <h3>Brown Dress</h3>
+                    <p class="price">$84.99</p>
+                    <button
+                        class="add-to-cart"
+                        onclick="addToCart('Brown Dress')"
+                    >
+                        Add to Cart
+                    </button>
+                    <button class="buy-now" onclick="buyNow('Brown Dress')">
+                        Buy Now
+                    </button>
+                </div>
+                <div class="product-card" data-category="shirt">
+                    <img src="product3.png" alt="Product 3" />
+                    <h3>Brown Shirt</h3>
+                    <p class="price">$24.99</p>
+                    <button
+                        class="add-to-cart"
+                        onclick="addToCart('Brown Shirt')"
+                    >
+                        Add to Cart
+                    </button>
+                    <button class="buy-now" onclick="buyNow('Brown Shirt')">
+                        Buy Now
+                    </button>
+                </div>
+                <div class="product-card" data-category="pants">
+                    <img src="product4.png" alt="Product 4" />
+                    <h3>Brown Leather Pants</h3>
+                    <p class="price">$39.99</p>
+                    <button
+                        class="add-to-cart"
+                        onclick="addToCart('Brown Leather Pants')"
+                    >
+                        Add to Cart
+                    </button>
+                    <button
+                        class="buy-now"
+                        onclick="buyNow('Brown Leather Pants')"
+                    >
+                        Buy Now
+                    </button>
+                </div>
+                <div class="product-card" data-category="skirt">
+                    <img src="product5.png" alt="Product 5" />
+                    <h3>Brown Skirt</h3>
+                    <p class="price">$40.99</p>
+                    <button
+                        class="add-to-cart"
+                        onclick="addToCart('Brown Skirt')"
+                    >
+                        Add to Cart
+                    </button>
+                    <button class="buy-now" onclick="buyNow('Brown Skirt')">
+                        Buy Now
+                    </button>
+                </div>
+                <div class="product-card" data-category="coat">
+                    <img src="product6.png" alt="Product 3" />
+                    <h3>Brown Coat</h3>
+                    <p class="price">$24.99</p>
+                    <button
+                        class="add-to-cart"
+                        onclick="addToCart('Brown Coat')"
+                    >
+                        Add to Cart
+                    </button>
+                    <button class="buy-now" onclick="buyNow('Brown Coat')">
+                        Buy Now
+                    </button>
+                </div>
+                <div class="product-card" data-category="swimsuit">
+                    <img src="product7.png" alt="Product 7" />
+                    <h3>Brown Swimsuit</h3>
+                    <p class="price">$70.99</p>
+                    <button
+                        class="add-to-cart"
+                        onclick="addToCart('Brown Swimsuit')"
+                    >
+                        Add to Cart
+                    </button>
+                    <button class="buy-now" onclick="buyNow('Brown Swimsuit')">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-info">
+                <h3>attireful</h3>
+                <p>123 Address Rd</p>
+                <p>Email: contact@attireful.com</p>
+                <p>Phone: +1234567890</p>
+                <p>&copy; 2023 attireful</p>
+            </div>
+            <div class="footer-links">
+                <div class="connect">
+                    <h4>Connect with Us</h4>
+                    <div class="social-icons">
+                        <a href="#"
+                            ><img src="facebook.png" alt="Facebook"
+                        /></a>
+                        <a href="#"><img src="twitter.png" alt="Twitter" /></a>
+                        <a href="#"
+                            ><img src="instagram.png" alt="Instagram"
+                        /></a>
+                    </div>
+                </div>
+                <div class="policies">
+                    <h4>Policies</h4>
+                    <div class="policy-links">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms of Service</a>
+                        <a href="#">Shipping Policy</a>
+                        <a href="#">Return Policy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const categoryFilter = document.getElementById('category-filter');
+                    const productCards = document.querySelectorAll('.product-card');
+
+                    categoryFilter.addEventListener('change', function() {
+                        const selectedCategory = this.value;
+                        let visibleProducts = 0;
+
+                        productCards.forEach(card => {
+                            const category = card.dataset.category;
+
+                            if (selectedCategory === 'all' || selectedCategory === category) {
+                                card.style.display = 'block';
+                                visibleProducts++;
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+
+                        const productGrid = document.querySelector('.product-grid');
+                        if (visibleProducts === 1) {
+                            productGrid.classList.add('single-product');
+                        } else {
+                            productGrid.classList.remove('single-product');
+                        }
+                    });
+                });
+
+
+
+                const cart = new Map();
+
+            function addToCart(product) {
+                if (cart.has(product)) {
+                    const currentQuantity = cart.get(product);
+                    cart.set(product, currentQuantity + 1);
+                } else {
+                    cart.set(product, 1); 
+                }
+                updateCartSidebar();
+            }
+
+            function removeFromCart(product) {
+                if (cart.has(product)) {
+                    const currentQuantity = cart.get(product);
+                    if (currentQuantity === 1) {
+                        cart.delete(product);
+                    } else {
+                        cart.set(product, currentQuantity - 1);
+                    }
+                }
+                updateCartSidebar();
+            }
+
+            function updateCartSidebar() {
+                const cartItemsElement = document.getElementById('cartItems');
+                const cartSidebar = document.getElementById('cartSidebar');
+
+                if (cart.size === 0) {
+                    cartItemsElement.innerHTML = '<li>Your cart is empty</li>';
+                } else {
+                    cartItemsElement.innerHTML = ''; 
+                    cart.forEach((quantity, item) => {
+                        const li = document.createElement('li');
+                        li.textContent = `${item} x${quantity}`;
+
+                        const removeButton = document.createElement('button');
+                        removeButton.textContent = 'Remove';
+                        removeButton.className = 'remove-button';
+                        removeButton.onclick = function() {
+                            removeFromCart(item);
+                        };
+
+                        const buttonWrapper = document.createElement('div');
+                        buttonWrapper.classList.add('button-wrapper');
+                        buttonWrapper.appendChild(removeButton);
+
+                        li.appendChild(document.createTextNode(' '));
+                        li.appendChild(buttonWrapper);
+                        cartItemsElement.appendChild(li);
+                    });
+                }
+
+                const buyNowButton = document.querySelector('.buy-now-sidebar');
+            if (buyNowButton) {
+                buyNowButton.style.display = cart.size > 0 ? 'block' : 'none';
+            }
+
+                if (cart.size === 0) {
+                    cartSidebar.style.width = '250px';
+                }
+
+                openCart(); 
+            }
+
+            function buyNow() {
+                        if (cart.size > 0) {
+                            cart.clear();
+                            updateCartSidebar();
+                            fetch('/create-checkout-session', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    items: [
+                                        { id: 1, quantity: 3},
+                                        { id: 2, quantity: 1}
+                                    ]
+                                })
+                            }).then(res => {
+                                if (res.ok) return res.json()
+                                return res.json().then(json => Promise.reject(json))
+                            }).then(({ url }) => {
+                                console.log(url)
+                                window.location = url
+                        })
+                        .catch(e => {
+                            console.error(e.error)
+                        })
+                    }
+            }
+
+                    function openCart() {
+                        document.getElementById('cartSidebar').style.width = '250px';
+                    }
+
+                    function closeCart() {
+                        document.getElementById('cartSidebar').style.width = '0';
+                    }
+
+                    document.getElementById('cartButton').addEventListener('click', function(event) {
+                        openCart(); 
+                    });
+        </script>
+        <script>
+                const searchTerms = [
+                'Brown Leather Jacket',
+                'Brown Dress',
+                'Brown Shirt',
+                'Brown Leather Pants',
+                'Brown Skirt',
+                'Brown Coat',
+                'Brown Swimsuit'
+            ];
+
+            function performSearch(event) {
+                const searchInput = document.getElementById('search-input');
+                const searchValue = searchInput.value.toLowerCase().trim();
+
+                if (event.key === 'Enter' && searchValue !== '') {
+                    const matchingTerms = searchTerms.filter(term =>
+                        term.toLowerCase().includes(searchValue)
+                    );
+
+                    if (matchingTerms.length > 0) {
+                        window.location.href = 'catalog.html'
+                    } else {
+                        alert('No matching products found');
+                    }
+                }
+            }
+
+            function displaySuggestions(suggestions) {
+                const suggestionList = document.getElementById('suggestion-list');
+                suggestionList.innerHTML = '';
+
+                suggestions.forEach(suggestion => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = suggestion;
+                    listItem.addEventListener('click', () => {
+                        document.getElementById('search-input').value = suggestion;
+                        performSearch({ key: 'Enter' });
+                    });
+                    suggestionList.appendChild(listItem);
+                });
+
+                suggestionList.style.display = suggestions.length ? 'block' : 'none';
+            }
+
+            document.getElementById('search-input').addEventListener('input', () => {
+                const searchValue = document.getElementById('search-input').value.toLowerCase().trim();
+                const matchingSuggestions = searchTerms.filter(term =>
+                    term.toLowerCase().includes(searchValue)
+                );
+
+                displaySuggestions(matchingSuggestions);
+            });
+
+            document.addEventListener('click', event => {
+                const suggestionList = document.getElementById('suggestion-list');
+                const searchInput = document.getElementById('search-input');
+
+                if (event.target !== searchInput) {
+                    suggestionList.style.display = 'none';
+                }
+            });
+        </script>
+    </body>
+</html>
